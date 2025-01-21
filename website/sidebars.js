@@ -11,7 +11,7 @@ module.exports = {
         "what_is_new_v3",
         {
             "type": "category",
-            "label": "FireCMS Cloud  ☁️",
+            "label": "☁️  FireCMS Cloud",
             "collapsed": false,
             link: {
                 type: "doc",
@@ -23,7 +23,8 @@ module.exports = {
                 "cloud/deployment",
                 "cloud/app_check",
                 "cloud/creating_service_account",
-                "cloud/migrating_from_v2"
+                "cloud/migrating_from_v2",
+                "cloud/eject_collections"
             ]
         },
         {
@@ -31,20 +32,22 @@ module.exports = {
             "label": "Self-hosted",
             "collapsed": false,
             "items": [
-                "self/firestore_rules",
+                "self",
                 {
                     "type": "doc",
-                    "label": "Quickstart PRO",
-                    "id": "pro/pro_quickstart",
+                    "id": "pro/nextjs",
                     className: "pro-sidebar-item"
                 },
                 {
                     "type": "doc",
-                    "label": "Sample PRO",
+                    "id": "pro/firestore_rules",
+                    className: "pro-sidebar-item"
+                },
+                {
+                    "type": "doc",
                     "id": "pro/sample_pro",
                     className: "pro-sidebar-item"
                 },
-                "self/controllers",
                 "self/main_components",
                 "self/styling_firecms",
                 "self/deployment",
@@ -53,24 +56,31 @@ module.exports = {
                 "self/mongodb",
                 {
                     "type": "doc",
-                    "label": "Licensing",
                     "id": "pro/licensing",
                     className: "pro-sidebar-item"
                 },
                 {
                     "type": "doc",
-                    "label": "User management",
                     "id": "pro/user_management",
                     className: "pro-sidebar-item"
                 },
                 {
                     "type": "doc",
-                    "label": "Collection editor UI",
                     "id": "pro/collection_editor",
                     className: "pro-sidebar-item"
                 },
+                {
+                    "type": "doc",
+                    "id": "pro/data_export",
+                    className: "pro-sidebar-item"
+                },
+                {
+                    "type": "doc",
+                    "id": "pro/data_import",
+                    className: "pro-sidebar-item"
+                },
                 "self/custom_storage",
-                "pro/nextjs",
+                "self/controllers",
                 "self/migrating_from_v2_to_v3",
                 "self/migrating_from_v3_beta"
             ]
@@ -90,8 +100,7 @@ module.exports = {
                 "collections/dynamic_collections",
                 "collections/collection_actions",
                 "collections/collection_groups",
-                "collections/entity_actions",
-                "collections/eject_collections"
+                "collections/entity_actions"
             ]
         },
         {
