@@ -1,5 +1,5 @@
 import React, { useCallback, useMemo } from "react";
-
+import UploadJsonButton from "./UploadJsonButton";
 import "typeface-rubik";
 import "@fontsource/jetbrains-mono";
 
@@ -31,25 +31,25 @@ import {
 } from "@firecms/firebase";
 import { CenteredView } from "@firecms/ui";
 import { demoCollection } from "./collections/demo";
+import { ofekQuestionsCollection } from "./collections/Ofek_Questions";
 
 export const firebaseConfig = {
-    apiKey: "AIzaSyBzt-JvcXvpDrdNU7jYX3fC3v0EAHjTKEw",
-    authDomain: "demo.firecms.co",
-    databaseURL: "https://firecms-demo-27150.firebaseio.com",
-    projectId: "firecms-demo-27150",
-    storageBucket: "firecms-demo-27150.appspot.com",
-    messagingSenderId: "837544933711",
-    appId: "1:837544933711:web:75822ffc0840e3ae01ad3a",
-    measurementId: "G-8HRE8MVXZJ"
+    apiKey: "AIzaSyCe8jfZ_u-4u1HJZUdmt40wjy5VDKB3ook",
+    authDomain: "wizzy-b4239.firebaseapp.com",
+    projectId: "wizzy-b4239",
+    storageBucket: "wizzy-b4239.firebasestorage.app",
+    messagingSenderId: "622923747842",
+    appId: "1:622923747842:web:18b39bf89c69f6441e8d1b",
+    measurementId: "G-8657R0VL5W"
 };
 
 function App() {
 
     // Use your own authentication logic here
     const myAuthenticator: Authenticator<FirebaseUserWrapper> = useCallback(async ({
-                                                                                       user,
-                                                                                       authController
-                                                                                   }) => {
+        user,
+        authController
+    }) => {
 
         if (user?.email?.includes("flanders")) {
             // You can throw an error to prevent access
@@ -66,7 +66,7 @@ function App() {
     }, []);
 
     const collections = useMemo(() => [
-        demoCollection
+        demoCollection, ofekQuestionsCollection
     ], []);
 
     const {
@@ -120,7 +120,7 @@ function App() {
 
     if (firebaseConfigLoading || !firebaseApp) {
         return <>
-            <CircularProgressCenter/>
+            <CircularProgressCenter />
         </>;
     }
 
@@ -139,29 +139,30 @@ function App() {
                     storageSource={storageSource}
                 >
                     {({
-                          context,
-                          loading
-                      }) => {
+                        context,
+                        loading
+                    }) => {
 
                         if (loading || authLoading) {
-                            return <CircularProgressCenter size={"large"}/>;
+                            return <CircularProgressCenter size={"large"} />;
                         }
 
                         if (!canAccessMainView) {
                             return <FirebaseLoginView authController={authController}
-                                                      firebaseApp={firebaseApp}
-                                                      signInOptions={signInOptions}
-                                                      notAllowedError={notAllowedError}/>;
+                                firebaseApp={firebaseApp}
+                                signInOptions={signInOptions}
+                                notAllowedError={notAllowedError} />;
                         }
 
-                        return <Scaffold
-                            autoOpenDrawer={false}>
-                            <AppBar
-                                title={"My demo app"}/>
-                            <Drawer/>
-                            <NavigationRoutes/>
-                            <SideDialogs/>
-                        </Scaffold>;
+                        return <Scaffold autoOpenDrawer={false}>
+                            <AppBar title={"My demo app"} />
+                            <div style={{ padding: "16px", textAlign: "right" }}>
+                            <UploadJsonButton firebaseApp={firebaseApp} />
+                            </div>
+                            <Drawer />
+                            <NavigationRoutes />
+                            <SideDialogs />
+                        </Scaffold>
                     }}
                 </FireCMS>
             </ModeControllerProvider>

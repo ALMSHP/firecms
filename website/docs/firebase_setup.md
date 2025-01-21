@@ -109,9 +109,10 @@ Create a file with the content:
 ```
 [
   {
-    "origin": ["*"],
-    "method": ["GET"],
-    "maxAgeSeconds": 3600
+    "origin": ["http://localhost:5173"],
+    "method": ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    "maxAgeSeconds": 3600,
+    "responseHeader": ["Content-Type"]
   }
 ]
 ```
